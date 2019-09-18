@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles"></head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container">
+    <div class="page-header">
+        <h1>Nuevo Producto</h1>
+    </div>
+    <p th:if="${error}" class="text text-danger" th:text="${error}"></p>
+
+    <form th:action="@{/producto/crear}" method="post" class="form-horizontal">
+        <!-- protección csrf -->
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <!-- fin csrf -->
+        <div class="form-group">
+            <label for="nombre" class="col-sm-2 control-label">Nombre del Producto</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="nombre" id="nombre"
+                       placeholder="nombre..."  required="required"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="precio" class="col-sm-2 control-label">Precio (Euros)</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control" name="precio" id="precio"
+                       required="required"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-outline-success btn-lg">Crear</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<footer th:insert="fragments.html::footer"></footer>
+</body>
+</html>

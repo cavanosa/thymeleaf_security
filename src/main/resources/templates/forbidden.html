@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+    <title>Fail</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container mt-5">
+    <div>
+        <div class="card mt-4">
+            <div class="card-header">
+                <i class="fa fa-bomb"></i>&nbsp;Sólo Chuck Norris puede ver esta página 403
+            </div>
+            <div class="card-block p-4">
+
+
+                <img th:src="@{/img/chuck.jpg}" class="img-fluid">
+
+            </div>
+            <a th:href="@{/index}"><button class="btn btn-primary btn-lg"><i class="far fa-hand-point-left"></i>&nbsp;Inicio</button></a>
+        </div>
+    </div>
+</div>
+<footer th:insert="fragments.html::footer"></footer>
+</body>
+</html>

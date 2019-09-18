@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles"></head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<!-- Page content goes here -->
+<div class="container">
+    <div class="jumbotron">
+        <h1 sec:authorize="!isAuthenticated()" class="display-4">Muy buenas, visitante</h1>
+        <h1 sec:authorize="isAuthenticated()" class="display-4">Muy buenas, <span sec:authentication="name"></span></h1>
+        <p class="lead">Bienvenido a nuestra tienda de productos</p>
+        <hr class="my-4">
+        <p>Si quieres más tutoriales, visita nuestro blog</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="https://inezpre5.wordpress.com" role="button" target="_blank">Visitar el blog</a>
+        </p>
+    </div>
+</div>
+<footer th:insert="fragments.html::footer"></footer>
+</body>
+</html>

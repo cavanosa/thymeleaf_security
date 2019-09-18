@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- Fragment #1 : Headerfiles contains css and js references -->
+<head th:fragment="headerfiles">
+    <title>Productos</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <link th:href="@{/bootstrap/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/fontawesome/css/all.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div th:fragment="nav">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+        <a class="navbar-brand" href="#">Productos</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/index}"><i class="fa fa-home"></i>&nbsp;Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a sec:authorize="isAuthenticated()" class="nav-link" href="#" th:href="@{/producto}">Productos</a>
+                </li>
+            </ul>
+            <form sec:authorize="isAuthenticated()" class="form-inline" form-method="post" th:action="@{/logout}">
+                <button  class="btn btn-outline-danger" type="submit"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+            </form>
+
+            <a sec:authorize="!isAuthenticated()"  th:href="@{/login}"><button  class="btn btn-outline-success"><i class="fa fa-user"></i> Iniciar Sesión</button></a>
+
+
+        </div>
+    </nav>
+</div>
+<div class="container"></div>
+<footer th:fragment="footer" class="dark bg-dark fixed-bottom text-center p-3">
+    <div class="container">
+        <span class="text-muted">Footer de la página &copy; yo mismo</span>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+</body>
+</html>

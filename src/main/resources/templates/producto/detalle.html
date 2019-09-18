@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles"></head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container">
+    <p><b>Nombre del producto</b></p><p th:text="${producto.nombre}"></p><br/>
+    <p><b>Precio del producto</b></p><p th:text="${producto.precio} + ' €'"></p><br/>
+    <td><a th:href="@{/producto}"><button class="btn btn-info" ><i class="far fa-arrow-alt-circle-left"></i> Volver</button></a></td>
+</div>
+<footer th:insert="fragments.html::footer"></footer>
+</body>
+</html>

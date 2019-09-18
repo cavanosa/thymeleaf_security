@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments.html :: headerfiles">
+    <title>Log In</title>
+</head>
+<body>
+<header th:insert="fragments.html :: nav"></header>
+<div class="container mt-5">
+    <div>
+        <div class="card mt-4">
+            <div class="card-header">
+                <i class="fa fa-user"></i> Iniciar sesión
+            </div>
+            <div class="card-block p-4">
+                <form sec:authorize="!isAuthenticated()" name="f" th:action="@{/signin}" method="post">
+                    <fieldset>
+                        <div th:if="${param.error}" class="alert alert-danger">
+                            Credenciales erróneas
+                        </div>
+                        <div th:if="${registroOK}" class="alert alert-success" th:text="${registroOK}">>
+                        </div>
+                        <div th:if="${param.logout}" class="alert alert-success">
+                            Hasta pronto!!
+                        </div>
+                        <div class="form-group">
+                            <label for="textUsername">Nombre</label>
+                            <input type="text" name="textUsername" id="textUsername" class="form-control" placeholder="nombre...">
+                        </div>
+                        <div class="form-group">
+                            <label for="textPassword">Contraseña</label>
+                            <input type="password" name="textPassword" id="textPassword" class="form-control">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkRememberMe" name="checkRememberMe">
+                            <label for="checkRememberMe" class="form-check-label">Recordarme</label>
+                        </div>
+                        <div class="form-actions mt-4">
+                            <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+                        </div>
+                    </fieldset>
+
+                </form>
+                <div class="mt-3" sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/usuario/registro}"><button class="btn btn-primary" >Registrarse</button></a>
+                </div>
+
+                <p sec:authorize="isAuthenticated()">Ya estás logueao, gilipollas</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="fragments.html::footer"></footer>
+</body>
+</html>
